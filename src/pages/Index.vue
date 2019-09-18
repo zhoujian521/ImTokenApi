@@ -47,31 +47,42 @@ export default {
       }
     },
     scanQRCode() {
-      window.imToken.callAPI("native.scanQRCode", function(err, text) {
-        if (err) {
-          alert(err.message);
-          console.log("====native.scanQRCode==err===");
-          console.log(err.message);
-          console.log("====native.scanQRCode==err====");
-          this.$q.notify({
-            message: err.message,
-            position: "top",
-            color: "positive",
-            timeout: 2000
-          });
-        } else {
-          alert(text);
-          console.log("====native.scanQRCode===success==");
-          console.log(text);
-          console.log("====native.scanQRCode===success===");
-          this.$q.notify({
-            message: text,
-            position: "top",
-            color: "positive",
-            timeout: 2000
-          });
-        }
-      });
+      try {
+        console.log("============window.imToken========================");
+        console.log(window.imToken);
+        console.log("============window.imToken========================");
+        console.log("========001====native.scanQRCode========================");
+        window.imToken.callAPI("native.scanQRCode", function(err, text) {
+          if (err) {
+            alert(err.message);
+            console.log("====native.scanQRCode==err===");
+            console.log(err.message);
+            console.log("====native.scanQRCode==err====");
+            this.$q.notify({
+              message: err.message,
+              position: "top",
+              color: "positive",
+              timeout: 2000
+            });
+          } else {
+            alert(text);
+            console.log("====native.scanQRCode===success==");
+            console.log(text);
+            console.log("====native.scanQRCode===success===");
+            this.$q.notify({
+              message: text,
+              position: "top",
+              color: "positive",
+              timeout: 2000
+            });
+          }
+        });
+        console.log("======002=====native.scanQRCode=========================");
+      } catch (error) {
+        console.log("============native.scanQRCode========================");
+        console.log(error);
+        console.log("============native.scanQRCode========================");
+      }
     }
   }
 };
